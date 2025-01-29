@@ -1,0 +1,5 @@
+#!/bin/bash
+git add .
+read MESSAGE
+git commit -m $MESSAGE
+git push origin main
