@@ -1,2 +1,2 @@
 #!/bin/bash
-[ "$(ls -l hello | awk '{print $3}')" = "guillaume" ] | chown root hello 
+[ "$(ls -l hello | awk '{print $3}')" = "guillaume" ] | chown vincent hello 
