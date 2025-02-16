@@ -1,2 +1,1 @@
-This is the README.md in root
-
+This is README.md in this new folder
