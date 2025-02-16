@@ -1,11 +1,2 @@
 #!/bin/bash
-for a in {a..z}
-do
-  for b in {a..z}
-  do
-    if [ "$a$b" != "oo" ]
-    then
-      echo $a$b
-    fi
-  done
-done
+printf '%s\n' {a..n}{a..z} o{a..n,p..z} {p..z}{a..z}
