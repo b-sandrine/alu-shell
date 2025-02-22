@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # This is the init script that manages the manage_my_process.
 
 case "$1" in
