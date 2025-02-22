@@ -1,2 +1,3 @@
 #!/usr/bin/env bash
-echo "PID is $$"
+# This script displays its own PID.
+echo $$  # $$ is a special variable that contains the PID of the current shell
