@@ -1,6 +1,5 @@
 #!/bin/bash
-
-# Path to the Apache access log file (update with the actual path if needed)
+# Path to the Apache access log file (update with the actual path if needed
 log_file="apache-access.log"
 
 # Using awk to count occurrences of each IP and HTTP code pair
