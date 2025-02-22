@@ -1,4 +1,3 @@
 #!/usr/bin/env bash
 # This script stops processes related to 4-to_infinity_and_beyond.
-pgrep -f "4-to_infinity_and_beyond" | xargs -I {} pgrep -P {} > /dev/null && echo "Process found and stopped"
-
+pgrep -f "4-to_infinity_and_beyond" | xargs -I {} pgrep -P {} > /dev/null
