@@ -1,20 +1,25 @@
 #!/usr/bin/env bash
-# This script manages the process that writes "I am alive!" to /tmp/my_process indefinitely.
+# This script creates a PID file, displays "To infinity and beyond" indefinitely,
+# displays "I hate the kill command" when receiving SIGTERM,
+# displays "Y U no love me?!" when receiving SIGINT,
+# and deletes the PID file and exits when receiving SIGQUIT or SIGTERM.
 
-if [ "$1" == "start" ]; then
-    nohup bash -c 'while true; do echo "I am alive!" > /tmp/my_process; sleep 2; done' &
-    echo $! > /var/run/my_process.pid
-    echo "manage_my_process started"
-elif [ "$1" == "stop" ]; then
-    kill $(cat /var/run/my_process.pid)
-    rm -f /var/run/my_process.pid
-    echo "manage_my_process stopped"
-elif [ "$1" == "restart" ]; then
-    kill $(cat /var/run/my_process.pid)
-    rm -f /var/run/my_process.pid
-    nohup bash -c 'while true; do echo "I am alive!" > /tmp/my_process; sleep 2; done' &
-    echo $! > /var/run/my_process.pid
-    echo "manage_my_process restarted"
-else
-    echo "Usage: manage_my_process {start|stop|restart}"
-fi
+PID_FILE="/var/run/myscript.pid"
+
+# Create the PID file with the current script's PID
+echo $$ > "$PID_FILE"
+
+# When receiving SIGINT (Ctrl+C), display a message but continue running
+trap 'echo "Y U no love me?!"' SIGINT
+
+# When receiving SIGTERM, display a message, remove the PID file, and exit
+trap 'echo "I hate the kill command"; rm -f "$PID_FILE"; exit' SIGTERM
+
+# When receiving SIGQUIT, remove the PID file and exit
+trap 'rm -f "$PID_FILE"; exit' SIGQUIT
+
+# Infinite loop: display "To infinity and beyond" every 2 seconds
+while true; do
+    echo "To infinity and beyond"
+    sleep 2
+done
