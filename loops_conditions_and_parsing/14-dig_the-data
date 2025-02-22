@@ -3,4 +3,4 @@
 log_file="apache-access.log"
 
 # Using awk to count occurrences of each IP and HTTP code pair
-awk '{print $1, $9}' $log_file | sort | uniq -c | sort -nr | awk '{print $1, $2, $3}'
+awk '{print $1, $9}' $log_file | sort | uniq -c | sort -nr | awk '{printf "%5s %s %s\n", $1, $2, $3}'
