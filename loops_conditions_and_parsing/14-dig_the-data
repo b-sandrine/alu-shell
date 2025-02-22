@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# Path to the Apache access log file (update with the actual path if needed)
+log_file="apache-access.log"
+
+# Using awk to count occurrences of each IP and HTTP code pair
+awk '{print $1, $9}' $log_file | sort | uniq -c | sort -nr | awk '{print $1, $2, $3}'
